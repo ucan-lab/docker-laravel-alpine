@@ -1,0 +1,19 @@
+{
+  // See http://go.microsoft.com/fwlink/?LinkId=827846
+  // for the documentation about the extensions.json format
+  "recommendations": [
+    // Extension identifier format: ${publisher}.${name}. Example: vscode.csharp
+    "coenraads.bracket-pair-colorizer",
+    "davidanson.vscode-markdownlint",
+    "EditorConfig.editorconfig",
+    "felixfbecker.php-debug",
+    "felixfbecker.php-intellisense",
+    "HookyQR.beautify",
+    "mechatroner.rainbow-csv",
+    "mehedidracula.php-namespace-resolver",
+    "mikestead.dotenv",
+    "mosapride.zenkaku",
+    "neilbrayfield.php-docblocker",
+    "ryannaddy.laravel-artisan"
+  ]
+}

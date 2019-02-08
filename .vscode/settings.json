@@ -1,0 +1,8 @@
+{
+  "editor.formatOnSave": true,
+  "editor.renderWhitespace": "all",
+  "breadcrumbs.enabled": true,
+  "editor.highlightActiveIndentGuide": true,
+  "namespaceResolver.sortOnSave": true,
+  "namespaceResolver.sortNatural": true
+}
