@@ -39,3 +39,14 @@ services:
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
     ports:
       - ${MYSQL_PORT}:3306
+
+  node:
+    container_name: ${PROJECT_NAME}-node
+    image: node:11-alpine
+    volumes:
+      - ${PROJECT_PATH}:/work
+    working_dir: /work
+
+  redis:
+    container_name: ${PROJECT_NAME}_redis
+    image: redis:alpine
