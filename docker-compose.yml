@@ -1,0 +1,41 @@
+version: "3"
+services:
+  web:
+    image: nginx
+    container_name: ${PROJECT_NAME}-web
+    depends_on:
+      - app
+    ports:
+      - ${NGINX_PORT}:80
+    volumes:
+      - ${PROJECT_PATH}:/work
+      - ./docker/nginx/logs:/var/log/nginx/
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+
+  app:
+    container_name: ${PROJECT_NAME}-app
+    build:
+      context: ./docker/php
+    environment:
+      DB_HOST: db
+      REDIS_HOST: redis
+    ports:
+      - ${LARAVEL_SERVER_PORT}:8000
+    volumes:
+      - ${PROJECT_PATH}:/work
+    working_dir: /work
+
+  db:
+    container_name: ${PROJECT_NAME}-db
+    build:
+      context: ./docker/mysql
+    volumes:
+      - ./docker/mysql/data:/var/lib/mysql
+      - ./docker/mysql/logs:/var/log/mysql
+    environment:
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    ports:
+      - ${MYSQL_PORT}:3306
