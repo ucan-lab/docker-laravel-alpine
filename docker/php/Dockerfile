@@ -1,4 +1,4 @@
-FROM php:7.3.1-fpm-stretch
+FROM php:7.3.1-fpm-alpine
 LABEL maintainer "ucan"
 
 COPY php.ini /usr/local/etc/php/
