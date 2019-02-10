@@ -24,7 +24,7 @@ $ docker-compose up -d
 ### Laravel new project install
 
 ```
-$ docker-compose exec app bash
+$ docker-compose exec app ash
 $ composer create-project --prefer-dist laravel/laravel .
 ```
 
@@ -48,7 +48,7 @@ $ mysql -u${MYSQL_USER} -p${MYSQL_PASSWORD} ${MYSQL_DATABASE}
 ### Node(npm, yarn)
 
 ```
-$ docker-compose run node sh
+$ docker-compose run node ash
 $ npm install # OR yarn install
 $ npm run dev # OR yarn run dev
 ```
@@ -56,7 +56,7 @@ $ npm run dev # OR yarn run dev
 ### Redis for Laravel
 
 ```
-$ docker-compose exec app bash
+$ docker-compose exec app ash
 $ composer require predis/predis
 $ sed -i -e 's/CACHE_DRIVER=file/CACHE_DRIVER=redis/' .env
 $ sed -i -e 's/SESSION_DRIVER=file/SESSION_DRIVER=redis/' .env
@@ -65,6 +65,6 @@ $ sed -i -e 's/SESSION_DRIVER=file/SESSION_DRIVER=redis/' .env
 ### Redis cli
 
 ```
-$ docker-compose exec redis bash
+$ docker-compose exec redis ash
 $ redis-cli
 ```
