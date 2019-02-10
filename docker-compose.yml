@@ -31,12 +31,14 @@ services:
       context: ./docker/mysql
     volumes:
       - ./docker/mysql/data:/var/lib/mysql
+      - ./docker/mysql/sql:/docker-entrypoint-initdb.d
       - ./docker/mysql/logs:/var/log/mysql
     environment:
       - MYSQL_DATABASE=${MYSQL_DATABASE}
       - MYSQL_USER=${MYSQL_USER}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_TESTING_DATABASE=${MYSQL_TESTING_DATABASE}
     ports:
       - ${MYSQL_PORT}:3306
 
