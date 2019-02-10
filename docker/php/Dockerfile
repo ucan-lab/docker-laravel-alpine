@@ -14,8 +14,8 @@ RUN set -x && \
   php composer-setup.php && \
   php -r "unlink('composer-setup.php');" && \
   mv composer.phar /usr/local/bin/composer && \
-  apt-get update && \
-  apt-get install -y libicu-dev libzip-dev git zip unzip && \
+  apk update && \
+  apk add icu-dev libzip-dev git zip unzip && \
   docker-php-ext-install intl pdo_mysql mbstring zip bcmath && \
   composer config -g repos.packagist composer https://packagist.jp && \
   composer global require hirak/prestissimo
