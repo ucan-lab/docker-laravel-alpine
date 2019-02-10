@@ -1,4 +1,4 @@
-FROM mysql:8.0.14
+FROM mysql:8.0.15
 LABEL maintainer "ucan"
 
 ADD ./my.cnf /etc/mysql/my.cnf
