@@ -4,4 +4,6 @@ LABEL maintainer "ucan"
 ADD ./my.cnf /etc/mysql/my.cnf
 RUN set -x && \
   chmod 644 /etc/mysql/my.cnf && \
-  mkdir /var/lib/mysql-files
+  mkdir /var/lib/mysql-files && \
+  cp /etc/localtime /etc/localtime.org && \
+  ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
