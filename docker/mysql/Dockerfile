@@ -2,7 +2,7 @@ FROM mysql:8.0.15
 LABEL maintainer "ucan"
 
 ADD ./my.cnf /etc/mysql/my.cnf
-RUN set -x && \
+RUN set -eux && \
   chmod 644 /etc/mysql/my.cnf && \
   mkdir /var/lib/mysql-files && \
   cp /etc/localtime /etc/localtime.org && \

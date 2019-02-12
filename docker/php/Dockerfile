@@ -9,7 +9,7 @@ ENV COMPOSER_HOME /composer
 ENV PATH $PATH:/composer/vendor/bin
 
 # Composer install
-RUN set -x && \
+RUN set -eux && \
   php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
   php composer-setup.php && \
   php -r "unlink('composer-setup.php');" && \
