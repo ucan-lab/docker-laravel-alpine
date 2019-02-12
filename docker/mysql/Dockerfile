@@ -1,7 +1,7 @@
 FROM mysql:8.0.15
 LABEL maintainer "ucan"
 
-ADD ./my.cnf /etc/mysql/my.cnf
+COPY ./my.cnf /etc/mysql/my.cnf
 RUN set -eux && \
   chmod 644 /etc/mysql/my.cnf && \
   mkdir /var/lib/mysql-files && \
