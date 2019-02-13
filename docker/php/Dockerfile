@@ -1,7 +1,7 @@
 FROM php:7.3.2-fpm-alpine
 LABEL maintainer "ucan"
 
-COPY php.ini /usr/local/etc/php/
+COPY php.ini /usr/local/etc/php
 
 # Composer environment
 ENV COMPOSER_ALLOW_SUPERUSER 1
