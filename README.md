@@ -58,8 +58,8 @@ $ npm run dev # OR yarn run dev
 ```
 $ docker-compose exec app ash
 $ composer require predis/predis
-$ sed -i -e 's/CACHE_DRIVER=file/CACHE_DRIVER=redis/' .env
-$ sed -i -e 's/SESSION_DRIVER=file/SESSION_DRIVER=redis/' .env
+$ sed -i -e 's/CACHE_DRIVER=.*/CACHE_DRIVER=redis/' .env
+$ sed -i -e 's/SESSION_DRIVER=.*/SESSION_DRIVER=redis/' .env
 ```
 
 ### Redis cli
