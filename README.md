@@ -33,6 +33,7 @@ http://127.0.0.1:3500
 ### Laravel migration execute
 
 ```
+$ docker-compose exec app ash
 $ php artisan migrate
 ```
 
