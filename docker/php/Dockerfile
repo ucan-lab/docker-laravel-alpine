@@ -2,6 +2,8 @@ FROM php:7.3.2-fpm-alpine
 LABEL maintainer "ucan"
 
 COPY php.ini /usr/local/etc/php
+COPY aliases.sh /etc/profile.d
+COPY profile.sh /etc/profile.d
 COPY crontab/laravel /var/spool/cron/crontabs/root
 
 # Composer environment
