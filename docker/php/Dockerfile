@@ -2,6 +2,7 @@ FROM php:7.3.2-fpm-alpine
 LABEL maintainer "ucan"
 
 COPY php.ini /usr/local/etc/php
+COPY crontab/laravel /var/spool/cron/crontabs/root
 
 # Composer environment
 ENV COMPOSER_ALLOW_SUPERUSER 1
