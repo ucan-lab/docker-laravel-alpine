@@ -24,7 +24,7 @@ $ docker-compose up -d
 ### Laravel new project install
 
 ```
-$ docker-compose exec app ash
+$ docker-compose exec app ash -l
 $ composer create-project --prefer-dist laravel/laravel .
 ```
 
@@ -33,7 +33,7 @@ http://127.0.0.1:3500
 ### Laravel migration execute
 
 ```
-$ docker-compose exec app ash
+$ docker-compose exec app ash -l
 $ php artisan migrate
 ```
 
