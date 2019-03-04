@@ -19,7 +19,10 @@ RUN set -eux && \
   php -r "unlink('composer-setup.php');" && \
   mv composer.phar /usr/local/bin/composer && \
   apk update && \
-  apk add icu-dev libzip-dev git zip unzip && \
+  apk add --update --no-cache icu-dev libzip-dev git zip unzip tzdata && \
+  cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime && \
+  echo "Asia/Tokyo" > /etc/timezone && \
+  apk del tzdata && \
   docker-php-ext-install intl pdo_mysql mbstring zip bcmath && \
   composer config -g repos.packagist composer https://packagist.jp && \
   composer global require hirak/prestissimo && \
