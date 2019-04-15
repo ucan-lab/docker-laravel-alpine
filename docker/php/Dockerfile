@@ -17,11 +17,22 @@ RUN set -eux && \
   php -r "unlink('composer-setup.php');" && \
   mv composer.phar /usr/local/bin/composer && \
   apk update && \
-  apk add --update --no-cache icu-dev libzip-dev autoconf gcc g++ make git zip unzip tzdata && \
+  apk upgrade && \
+  apk add --update --no-cache --virtual=.build-dependencies \
+    autoconf \
+    gcc \
+    g++ \
+    make \
+    tzdata && \
+  apk add --update --no-cache \
+    icu-dev \
+    libzip-dev \
+    zip \
+    unzip && \
   cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime && \
   echo "Asia/Tokyo" > /etc/timezone && \
   pecl install xdebug && \
-  apk del autoconf gcc g++ make tzdata && \
+  apk del .build-dependencies && \
   docker-php-ext-install intl pdo_mysql mbstring zip bcmath && \
   docker-php-ext-enable xdebug && \
   composer config -g repos.packagist composer https://packagist.jp && \
