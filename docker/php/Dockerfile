@@ -1,4 +1,4 @@
-FROM php:7.3.2-fpm-alpine
+FROM php:7.3.4-fpm-alpine
 LABEL maintainer "ucan"
 
 COPY php.ini /usr/local/etc/php
