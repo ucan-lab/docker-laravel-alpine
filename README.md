@@ -7,6 +7,12 @@ PHP7.3/MySQL8.0/nginx/composer/redis/node
 
 ## Usage
 
+### Git settings(Windows Only...😇)
+
+```
+$ git config --global core.autocrlf false
+```
+
 ### Git clone
 
 ```
@@ -21,23 +27,29 @@ $ docker-compose build
 $ docker-compose up -d
 ```
 
-### Laravel new project install
+### Install Laravel 5 using Composer
 
 ```
-$ docker-compose exec app ash
-$ composer create-project --prefer-dist laravel/laravel .
+$ docker-compose exec app composer create-project --prefer-dist "laravel/laravel=5.8.*" .
 ```
 
 http://127.0.0.1:3500
 
-### Laravel migration execute
+### Running Migrations
 
 ```
-$ docker-compose exec app ash
-$ php artisan migrate
+$ docker-compose exec app php artisan migrate
 ```
 
 ## As necessary
+
+### Login shell of the app container
+
+```
+$ docker-compose exec app ash -l
+```
+
+[alias settings](docker/php/aliases.sh) is enabled by `-l` option.
 
 ### MySQL connection
 
