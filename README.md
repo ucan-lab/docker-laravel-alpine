@@ -7,9 +7,7 @@ PHP7.3/MySQL8.0/nginx/composer/redis/node
 
 ## Usage
 
-### Git settings
-
-windows only ... 😇
+### Git settings(Windows Only...😇)
 
 ```
 $ git config --global core.autocrlf false
