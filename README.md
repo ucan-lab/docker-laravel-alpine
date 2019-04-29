@@ -93,3 +93,12 @@ $ sed -i -e 's/SESSION_DRIVER=.*/SESSION_DRIVER=redis/' .env
 $ docker-compose exec redis ash
 $ redis-cli
 ```
+
+### Clear database volume
+
+```
+$ docker volume ls
+local               ${COMPOSE_PROJECT_NAME}_db-data
+
+$ docker volume rm ${COMPOSE_PROJECT_NAME}_db-data
+```
