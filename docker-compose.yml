@@ -15,7 +15,6 @@ services:
     build:
       context: ./docker/php
     environment:
-      DB_HOST: db
       REDIS_HOST: redis
     ports:
       - ${LARAVEL_SERVER_PORT}:8000
@@ -28,16 +27,28 @@ services:
       context: ./docker/mysql
     volumes:
       - db-data:/var/lib/mysql
-      - ./docker/mysql/sql:/docker-entrypoint-initdb.d
       - ./docker/mysql/logs:/var/log/mysql
     environment:
       - MYSQL_DATABASE=${MYSQL_DATABASE}
       - MYSQL_USER=${MYSQL_USER}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-      - MYSQL_TESTING_DATABASE=${MYSQL_TESTING_DATABASE}
     ports:
       - ${MYSQL_PORT}:3306
+
+  db-testing:
+    build:
+      context: ./docker/mysql
+    tmpfs:
+      - /var/lib/mysql
+      - /var/log/mysql
+    environment:
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    ports:
+      - ${MYSQL_TESTING_PORT}:3306
 
   node:
     image: node:11-alpine
