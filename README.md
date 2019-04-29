@@ -38,7 +38,19 @@ http://127.0.0.1:3500
 ### Running Migrations
 
 ```
-$ docker-compose exec app php artisan migrate
+$ docker-compose exec app ash
+$ sed -i -e "s/DB_HOST=.*/DB_HOST=db/" .env
+$ php artisan migrate
+```
+
+### Running Testings
+
+```
+$ docker-compose exec app ash
+$ cp .env.example .env.testing
+$ php artisan key:generate --env testing
+$ sed -i -e "s/DB_HOST=.*/DB_HOST=db-testing/" .env.testing
+$ ./vendor/bin/phpunit
 ```
 
 ## As necessary
