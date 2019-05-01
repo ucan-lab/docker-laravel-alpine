@@ -53,6 +53,19 @@ $ sed -i -e "s/DB_HOST=.*/DB_HOST=db-testing/" .env.testing
 $ ./vendor/bin/phpunit
 ```
 
+### Send Test Mail
+
+```
+$ docker-compose exec app ash
+$ sed -i -e "s/MAIL_HOST=.*/MAIL_HOST=mail/" .env
+$ sed -i -e "s/MAIL_PORT=.*/MAIL_PORT=1025/" .env
+
+$ php artisan tinker
+Mail::raw('test mail',function($message){$message->to('test@example.com')->subject('test');});
+```
+
+http://127.0.0.1:3504
+
 ## As necessary
 
 ### Login shell of the app container
