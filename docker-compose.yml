@@ -14,8 +14,6 @@ services:
   app:
     build:
       context: ./docker/php
-    environment:
-      REDIS_HOST: redis
     ports:
       - ${LARAVEL_SERVER_PORT}:8000
     volumes:
@@ -33,6 +31,7 @@ services:
       - MYSQL_USER=${MYSQL_USER}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - TZ=Asia/Tokyo
     ports:
       - ${MYSQL_PORT}:3306
 
@@ -47,6 +46,7 @@ services:
       - MYSQL_USER=${MYSQL_USER}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - TZ=Asia/Tokyo
     ports:
       - ${MYSQL_TESTING_PORT}:3306
 

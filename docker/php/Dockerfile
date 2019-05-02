@@ -10,6 +10,9 @@ ENV PATH $PATH:/composer/vendor/bin
 ARG PSYSH_DIR=/usr/local/share/psysh
 ARG PHP_MANUAL_URL=http://psysh.org/manual/ja/php_manual.sqlite
 
+# timezone
+ARG TZ=Asia/Tokyo
+
 # Composer install
 RUN set -eux && \
   php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
@@ -30,7 +33,7 @@ RUN set -eux && \
     zip \
     unzip && \
   cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime && \
-  echo "Asia/Tokyo" > /etc/timezone && \
+  echo ${TZ} > /etc/timezone && \
   pecl install xdebug && \
   apk del .build-dependencies && \
   docker-php-ext-install intl pdo_mysql mbstring zip bcmath && \
