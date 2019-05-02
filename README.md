@@ -96,8 +96,13 @@ $ npm run dev # OR yarn run dev
 ```
 $ docker-compose exec app ash
 $ composer require predis/predis
+$ sed -i -e 's/REDIS_HOST=.*/REDIS_HOST=redis/' .env
 $ sed -i -e 's/CACHE_DRIVER=.*/CACHE_DRIVER=redis/' .env
 $ sed -i -e 's/SESSION_DRIVER=.*/SESSION_DRIVER=redis/' .env
+
+$ php artisan tinker
+Redis::set('name', 'hoge');
+Redis::get('name');
 ```
 
 ### Redis cli

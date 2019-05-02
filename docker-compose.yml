@@ -14,8 +14,6 @@ services:
   app:
     build:
       context: ./docker/php
-    environment:
-      REDIS_HOST: redis
     ports:
       - ${LARAVEL_SERVER_PORT}:8000
     volumes:
