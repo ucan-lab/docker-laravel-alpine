@@ -8,7 +8,7 @@ services:
       - ${NGINX_PORT}:80
     volumes:
       - ${PROJECT_PATH}:/work
-      - ./docker/nginx/logs:/var/log/nginx/
+      - ./docker/nginx/logs:/var/log/nginx
       - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
 
   app:
