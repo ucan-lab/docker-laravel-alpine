@@ -1,4 +1,4 @@
-FROM php:7.3.4-fpm-alpine
+FROM php:7.3.5-fpm-alpine
 LABEL maintainer "ucan"
 
 # Composer environment
