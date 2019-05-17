@@ -19,8 +19,6 @@ alias now='date +%T'
 
 alias art='php artisan'
 alias artisan='php artisan'
-alias cdump='composer dump-autoload -o'
-alias composer:dump='composer dump-autoload -o'
 alias db:reset='php artisan migrate:reset && php artisan migrate --seed'
 alias dusk='php artisan dusk'
 alias fresh='php artisan migrate:fresh'
