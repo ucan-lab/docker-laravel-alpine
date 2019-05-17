@@ -1,11 +1,6 @@
 FROM php:7.3.5-fpm-alpine
 LABEL maintainer "ucan"
 
-# Composer environment
-ENV COMPOSER_ALLOW_SUPERUSER 1
-ENV COMPOSER_HOME /composer
-ENV PATH $PATH:/composer/vendor/bin
-
 # tinker(psysh)
 ARG PSYSH_DIR=/usr/local/share/psysh
 ARG PHP_MANUAL_URL=http://psysh.org/manual/ja/php_manual.sqlite
@@ -13,10 +8,8 @@ ARG PHP_MANUAL_URL=http://psysh.org/manual/ja/php_manual.sqlite
 # timezone
 ARG TZ=Asia/Tokyo
 
-# Composer install
 RUN set -eux && \
   apk update && \
-  apk upgrade && \
   apk add --update --no-cache --virtual=.build-dependencies \
     autoconf \
     gcc \
@@ -25,18 +18,13 @@ RUN set -eux && \
     tzdata && \
   apk add --update --no-cache \
     icu-dev \
-    libzip-dev \
-    zip \
-    unzip && \
+    libzip-dev && \
   cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime && \
   echo ${TZ} > /etc/timezone && \
   pecl install xdebug && \
   apk del .build-dependencies && \
   docker-php-ext-install intl pdo_mysql mbstring zip bcmath && \
   docker-php-ext-enable xdebug && \
-  curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && \
-  composer config -g repos.packagist composer https://packagist.jp && \
-  composer global require hirak/prestissimo && \
   mkdir $PSYSH_DIR && wget $PHP_MANUAL_URL -P $PSYSH_DIR
 
 # Config

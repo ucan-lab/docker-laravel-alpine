@@ -30,7 +30,7 @@ $ docker-compose up -d
 ### Install Laravel 5 using Composer
 
 ```
-$ docker-compose exec app composer create-project --prefer-dist "laravel/laravel=5.8.*" .
+$ docker-compose run composer create-project --prefer-dist "laravel/laravel=5.8.*" .
 ```
 
 http://127.0.0.1:3500
