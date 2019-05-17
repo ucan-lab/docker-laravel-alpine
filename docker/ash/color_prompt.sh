@@ -9,3 +9,6 @@ if [ "$USERNAME" = root ]; then
 else
   PS1="[$GREEN\u@\h $NORMAL\W$GREEN]# $NORMAL"
 fi
+
+export HISTFILE=/etc/profile.d/.ash_history
+touch $HISTFILE
