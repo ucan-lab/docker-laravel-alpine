@@ -83,12 +83,18 @@ $ docker-compose exec db bash
 $ mysql -u${MYSQL_USER} -p${MYSQL_PASSWORD} ${MYSQL_DATABASE}
 ```
 
-### Node(npm, yarn)
+### Node(npm)
 
 ```
-$ docker-compose run node ash
-$ npm install # OR yarn install
-$ npm run dev # OR yarn run dev
+$ docker-compose run node npm install
+$ docker-compose run node npm run dev
+```
+
+### Node(yarn)
+
+```
+$ docker-compose run node yarn install
+$ docker-compose run node yarn run dev
 ```
 
 ### Redis for Laravel
