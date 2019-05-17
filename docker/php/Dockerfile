@@ -29,6 +29,4 @@ RUN set -eux && \
 
 # Config
 COPY php.ini /usr/local/etc/php
-COPY aliases.sh /etc/profile.d
-COPY profile.sh /etc/profile.d
 COPY crontab/laravel /var/spool/cron/crontabs/root
