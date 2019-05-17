@@ -1,7 +1,5 @@
-/docker/nginx/logs/*
-/docker/mysql/data/*
-/docker/mysql/logs/*
 /.idea
 /.vscode/*
 !.vscode/extensions.json
 !.vscode/settings.json
+/logs/*
