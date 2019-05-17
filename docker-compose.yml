@@ -20,6 +20,13 @@ services:
       - ${PROJECT_PATH}:/work
     working_dir: /work
 
+  composer:
+    build:
+      context: ./docker/composer
+    volumes:
+      - ${PROJECT_PATH}:/work
+    working_dir: /work
+
   db:
     build:
       context: ./docker/mysql
