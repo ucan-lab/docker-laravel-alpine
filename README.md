@@ -23,7 +23,6 @@ $ cd docker-laravel5
 ### Docker compose build & up
 
 ```
-$ docker-compose build
 $ docker-compose up -d
 ```
 
@@ -67,6 +66,12 @@ Mail::raw('test mail',function($message){$message->to('test@example.com')->subje
 http://127.0.0.1:3504
 
 ## As necessary
+
+### Composer dump autoload
+
+```
+$ docker-compose run composer dump-autoload
+```
 
 ### MySQL connection
 
