@@ -123,3 +123,19 @@ local               ${COMPOSE_PROJECT_NAME}_db-data
 
 $ docker volume rm ${COMPOSE_PROJECT_NAME}_db-data
 ```
+
+### Clone of exists code
+
+```
+$ git clone git@github.com:ucan-lab/docker-laravel5.git
+$ cd docker-laravel5
+$ docker-compose up -d
+
+$ git clone <source code url>
+$ docker-compose run composer install
+$ docker-compose exec app ash -l
+$ cp .env.example .env
+$ php artisan key:generate
+$ sed -i -e "s/DB_HOST=.*/DB_HOST=db/" .env
+$ php artisan migrate:fresh
+```
