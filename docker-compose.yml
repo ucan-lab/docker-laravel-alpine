@@ -44,6 +44,8 @@ services:
 
   db-testing:
     image: mysql:8.0.17
+    volumes:
+      - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
     tmpfs:
       - /var/lib/mysql
       - /var/log/mysql
