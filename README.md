@@ -2,7 +2,7 @@
 
 ## Description
 
-Build Laravel's development environment using docker.  
+Build Laravel's development environment using docker.
 PHP7.3/MySQL8.0/nginx/composer/redis/node
 
 ## Usage
@@ -23,23 +23,21 @@ $ cd docker-laravel5
 ### Docker compose build & up
 
 ```
-$ docker-compose up -d
+$ docker-compose up -d --build
 ```
 
 ### Install Laravel 5 using Composer
 
 ```
-$ docker-compose run composer create-project --prefer-dist "laravel/laravel=5.8.*" .
+$ docker-compose exec app composer create-project --prefer-dist "laravel/laravel=5.8.*" .
 ```
 
-http://127.0.0.1:3500
+http://127.0.0.1:10080
 
 ### Running Migrations
 
 ```
-$ docker-compose exec app ash -l
-$ sed -i -e "s/DB_HOST=.*/DB_HOST=db/" .env
-$ php artisan migrate
+$ docker-compose exec app php artisan migrate
 ```
 
 ### Running Testings
@@ -63,21 +61,20 @@ $ php artisan tinker
 Mail::raw('test mail',function($message){$message->to('test@example.com')->subject('test');});
 ```
 
-http://127.0.0.1:3504
+http://127.0.0.1:18025
 
 ## As necessary
 
 ### Composer dump autoload
 
 ```
-$ docker-compose run composer dump-autoload
+$ docker-compose exec app composer dump-autoload
 ```
 
 ### MySQL connection
 
 ```
-$ docker-compose exec db bash
-$ mysql -u${MYSQL_USER} -p${MYSQL_PASSWORD} ${MYSQL_DATABASE}
+$ docker-compose exec db bash -c 'mysql -uroot -p${MYSQL_PASSWORD} ${MYSQL_DATABASE}'
 ```
 
 ### Node(npm)
@@ -118,10 +115,9 @@ $ redis-cli
 ### Clear database volume
 
 ```
-$ docker volume ls
-local               ${COMPOSE_PROJECT_NAME}_db-data
-
-$ docker volume rm ${COMPOSE_PROJECT_NAME}_db-data
+$ docker-compose down --volumes --rmi all
+$ docker-compose up -d --build
+$ docker-compose exec app php artisan migrate
 ```
 
 ### Clone of exists code
@@ -129,10 +125,10 @@ $ docker volume rm ${COMPOSE_PROJECT_NAME}_db-data
 ```
 $ git clone git@github.com:ucan-lab/docker-laravel5.git
 $ cd docker-laravel5
-$ docker-compose up -d
+$ docker-compose up -d --build
 
 $ git clone <source code url>
-$ docker-compose run composer install
+$ docker-compose exec app composer install
 $ docker-compose exec app ash -l
 $ cp .env.example .env
 $ php artisan key:generate
