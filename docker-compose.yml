@@ -30,7 +30,7 @@ services:
   db:
     image: mysql:8.0.17
     volumes:
-      - db-data:/var/lib/mysql
+      - db-store:/var/lib/mysql
       - ./logs:/var/log/mysql
       - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
     environment:
