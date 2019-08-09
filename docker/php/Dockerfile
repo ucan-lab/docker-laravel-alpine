@@ -8,6 +8,10 @@ ARG PHP_MANUAL_URL=http://psysh.org/manual/ja/php_manual.sqlite
 # timezone
 ARG TZ
 
+# composer
+ENV COMPOSER_ALLOW_SUPERUSER 1
+ENV COMPOSER_HOME /composer
+
 RUN set -eux && \
   apk update && \
   apk add --update --no-cache --virtual=.build-dependencies \
@@ -25,8 +29,7 @@ RUN set -eux && \
   apk del .build-dependencies && \
   docker-php-ext-install intl pdo_mysql mbstring zip bcmath && \
   docker-php-ext-enable xdebug && \
-  mkdir $PSYSH_DIR && wget $PHP_MANUAL_URL -P $PSYSH_DIR
-
-# Config
-COPY php.ini /usr/local/etc/php
-COPY crontab/laravel /var/spool/cron/crontabs/root
+  mkdir $PSYSH_DIR && wget $PHP_MANUAL_URL -P $PSYSH_DIR && \
+  curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer && \
+  composer config -g repos.packagist composer https://packagist.jp && \
+  composer global require hirak/prestissimo

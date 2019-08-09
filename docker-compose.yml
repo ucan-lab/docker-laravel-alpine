@@ -27,12 +27,6 @@ services:
     environment:
       - TZ=${TZ}
 
-  composer:
-    build: ./docker/composer
-    volumes:
-      - ${PROJECT_PATH}:/work
-    working_dir: /work
-
   db:
     build: ./docker/mysql
     volumes:
