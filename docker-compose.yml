@@ -28,7 +28,7 @@ services:
       - TZ=${TZ}
 
   db:
-    build: ./docker/mysql
+    image: mysql:8.0.16
     volumes:
       - db-data:/var/lib/mysql
       - ./logs:/var/log/mysql
@@ -42,7 +42,7 @@ services:
       - ${MYSQL_PORT}:3306
 
   db-testing:
-    build: ./docker/mysql
+    image: mysql:8.0.16
     tmpfs:
       - /var/lib/mysql
       - /var/log/mysql
