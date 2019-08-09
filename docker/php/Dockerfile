@@ -6,7 +6,7 @@ ARG PSYSH_DIR=/usr/local/share/psysh
 ARG PHP_MANUAL_URL=http://psysh.org/manual/ja/php_manual.sqlite
 
 # timezone
-ARG TZ=Asia/Tokyo
+ARG TZ
 
 RUN set -eux && \
   apk update && \
