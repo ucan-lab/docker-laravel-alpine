@@ -20,6 +20,10 @@ services:
       - DB_USERNAME=${DB_USER}
       - DB_PASSWORD=${DB_PASS}
       - TZ=${TZ}
+      - CACHE_DRIVER=redis
+      - SESSION_DRIVER=redis
+      - QUEUE_DRIVER=redis
+      - REDIS_HOST=redis
 
   web:
     image: nginx:1.17.2-alpine
@@ -72,7 +76,9 @@ services:
     working_dir: /work
 
   redis:
-    image: redis:alpine
+    image: redis:4-alpine
+    volumes:
+      - redis-store:/data
 
   mail:
     image: mailhog/mailhog
@@ -81,4 +87,6 @@ services:
 
 volumes:
   db-store:
+    driver: local
+  redis-store:
     driver: local

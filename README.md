@@ -94,13 +94,8 @@ $ docker-compose run node yarn run dev
 ### Redis for Laravel
 
 ```
-$ docker-compose exec app ash -l
-$ composer require predis/predis
-$ sed -i -e 's/REDIS_HOST=.*/REDIS_HOST=redis/' .env
-$ sed -i -e 's/CACHE_DRIVER=.*/CACHE_DRIVER=redis/' .env
-$ sed -i -e 's/SESSION_DRIVER=.*/SESSION_DRIVER=redis/' .env
-
-$ php artisan tinker
+$ docker-compose exec app composer require predis/predis
+$ docker-compose exec app php artisan tinker
 Redis::set('name', 'hoge');
 Redis::get('name');
 ```
@@ -108,8 +103,7 @@ Redis::get('name');
 ### Redis cli
 
 ```
-$ docker-compose exec redis ash -l
-$ redis-cli
+$ docker-compose exec redis redis-cli
 ```
 
 ### Clear database volume
