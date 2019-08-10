@@ -46,7 +46,7 @@ $ docker-compose exec app php artisan migrate
 $ docker-compose exec app ash -l
 $ cp .env.example .env.testing
 $ php artisan key:generate --env testing
-$ sed -i -e "s/DB_HOST=.*/DB_HOST=db-testing/" .env.testing
+$ sed -i -e 's/<php>/<php>\n        <env name="DB_HOST" value="db-testing" force="true"\/>/' phpunit.xml
 $ ./vendor/bin/phpunit
 ```
 
@@ -126,6 +126,5 @@ $ docker-compose exec app composer install
 $ docker-compose exec app ash -l
 $ cp .env.example .env
 $ php artisan key:generate
-$ sed -i -e "s/DB_HOST=.*/DB_HOST=db/" .env
 $ php artisan migrate:fresh
 ```
