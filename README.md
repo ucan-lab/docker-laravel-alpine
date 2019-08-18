@@ -30,6 +30,7 @@ $ docker-compose up -d --build
 
 ```
 $ docker-compose exec app composer create-project --prefer-dist "laravel/laravel=5.8.*" .
+$ docker-compose exec app composer require predis/predis
 ```
 
 http://127.0.0.1:10080
@@ -94,7 +95,6 @@ $ docker-compose run node yarn run dev
 ### Redis for Laravel
 
 ```
-$ docker-compose exec app composer require predis/predis
 $ docker-compose exec app php artisan tinker
 Redis::set('name', 'hoge');
 Redis::get('name');
