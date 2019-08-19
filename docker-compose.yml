@@ -87,6 +87,4 @@ services:
 
 volumes:
   db-store:
-    driver: local
   redis-store:
-    driver: local
