@@ -70,13 +70,13 @@ services:
       - ${DB_TESTING_PORT}:3306
 
   node:
-    image: node:12-alpine
+    image: node:12.8-alpine
     volumes:
       - ${PROJECT_PATH}:/work
     working_dir: /work
 
   redis:
-    image: redis:4-alpine
+    image: redis:5.0-alpine
     volumes:
       - redis-store:/data
 
