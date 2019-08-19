@@ -54,11 +54,7 @@ $ ./vendor/bin/phpunit
 ### Send Test Mail
 
 ```
-$ docker-compose exec app ash -l
-$ sed -i -e "s/MAIL_HOST=.*/MAIL_HOST=mail/" .env
-$ sed -i -e "s/MAIL_PORT=.*/MAIL_PORT=1025/" .env
-
-$ php artisan tinker
+$ docker-compose exec app php artisan tinker
 Mail::raw('test mail',function($message){$message->to('test@example.com')->subject('test');});
 ```
 

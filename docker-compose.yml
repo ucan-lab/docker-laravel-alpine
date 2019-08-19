@@ -20,6 +20,8 @@ services:
       - DB_USERNAME=${DB_USER}
       - DB_PASSWORD=${DB_PASS}
       - TZ=${TZ}
+      - MAIL_HOST=${MAIL_HOST}
+      - MAIL_PORT=${MAIL_PORT}
       - CACHE_DRIVER=redis
       - SESSION_DRIVER=redis
       - QUEUE_DRIVER=redis
