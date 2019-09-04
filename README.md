@@ -16,8 +16,8 @@ $ git config --global core.autocrlf false
 ### Git clone
 
 ```
-$ git clone git@github.com:ucan-lab/docker-laravel5.git
-$ cd docker-laravel5
+$ git clone git@github.com:ucan-lab/docker-laravel.git
+$ cd docker-laravel
 ```
 
 ### Docker compose build & up
@@ -26,10 +26,10 @@ $ cd docker-laravel5
 $ docker-compose up -d --build
 ```
 
-### Install Laravel 5 using Composer
+### Install Laravel using Composer
 
 ```
-$ docker-compose exec app composer create-project --prefer-dist "laravel/laravel=5.8.*" .
+$ docker-compose exec app composer create-project --prefer-dist "laravel/laravel=6.0.*" .
 $ docker-compose exec app composer require predis/predis
 ```
 
@@ -113,8 +113,8 @@ $ docker-compose exec app php artisan migrate
 ### Clone of exists code
 
 ```
-$ git clone git@github.com:ucan-lab/docker-laravel5.git
-$ cd docker-laravel5
+$ git clone git@github.com:ucan-lab/docker-laravel.git
+$ cd docker-laravel
 $ docker-compose up -d --build
 
 $ git clone <source code url>
