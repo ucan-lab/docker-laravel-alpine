@@ -1,4 +1,4 @@
-# docker-laravel5
+# docker-laravel
 
 ## Description
 
@@ -84,8 +84,8 @@ $ docker-compose run node npm run dev
 ### Node(yarn)
 
 ```
-$ docker-compose run node yarn install
-$ docker-compose run node yarn run dev
+$ docker-compose run node yarn
+$ docker-compose run node yarn dev
 ```
 
 ### Redis for Laravel
