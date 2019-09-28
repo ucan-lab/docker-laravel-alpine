@@ -73,6 +73,7 @@ services:
 
   node:
     image: node:12.8-alpine
+    tty: true
     volumes:
       - ${PROJECT_PATH}:/work
     working_dir: /work
