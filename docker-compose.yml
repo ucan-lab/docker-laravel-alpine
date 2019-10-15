@@ -10,6 +10,7 @@ services:
     volumes:
       - ${PROJECT_PATH}:/work
       - ./docker/ash:/etc/profile.d
+      - ./docker/php/psysh:/root/.config/psysh
       - ./logs:/var/log/php
       - ./docker/php/php.ini:/usr/local/etc/php/php.ini
     working_dir: /work
