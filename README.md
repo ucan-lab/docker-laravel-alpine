@@ -1,7 +1,5 @@
 # docker-laravel
 
-## Description
-
 Build Laravel's development environment using docker.
 PHP7.3/MySQL8.0/nginx/composer/redis/node
 
