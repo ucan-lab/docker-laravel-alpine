@@ -62,11 +62,11 @@ return [
     'pager' => 'more',
 
     // Specify a custom prompt.
-    'prompt' => '>>>',
+    'prompt' => '>>> ',
 
     // PsySH automatically inserts semicolons at the end of input if a statement
     // is missing one. To disable this, set `requireSemicolons` to true.
-    'requireSemicolons' => true,
+    'requireSemicolons' => false,
 
     // Display an additional startup message. You can color and style the
     // message thanks to the Symfony Console tags. See
