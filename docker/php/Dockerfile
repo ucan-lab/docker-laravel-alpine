@@ -33,5 +33,6 @@ RUN set -eux && \
   docker-php-ext-enable xdebug && \
   mkdir $PSYSH_DIR && wget $PHP_MANUAL_URL -P $PSYSH_DIR && \
   curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer && \
+  composer config -g process-timeout 3600 && \
   composer config -g repos.packagist composer https://packagist.jp && \
   composer global require hirak/prestissimo
