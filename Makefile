@@ -37,6 +37,14 @@ ps:
 	docker-compose ps
 app:
 	docker-compose exec app ash -l
+db:
+	docker-compose exec db bash
+db-testing:
+	docker-compose exec db-testing bash
+mysql:
+	docker-compose exec db bash -c 'mysql -u $$MYSQL_USER -p$$MYSQL_PASSWORD $$MYSQL_DATABASE'
+mysql-testing:
+	docker-compose exec db-testing bash -c 'mysql -u $$MYSQL_USER -p$$MYSQL_PASSWORD $$MYSQL_DATABASE'
 tinker:
 	docker-compose exec app php artisan tinker
 dump:
