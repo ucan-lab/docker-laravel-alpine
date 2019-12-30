@@ -1,0 +1,18 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "XDebug on Docker",
+            "type": "php",
+            "request": "launch",
+            "port": 9000,
+            "pathMappings": {
+                // "Docker Directory": "Local Directory"
+                "/work": "${workspaceFolder}/src" // Set the value of PROJECT_PATH
+            },
+        }
+    ]
+}

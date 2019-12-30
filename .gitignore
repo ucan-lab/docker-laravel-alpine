@@ -1,5 +1,4 @@
 /.idea
-/.vscode
 /docker/ash/.ash_history
 /docker/php/psysh
 !/docker/php/psysh/config.php
