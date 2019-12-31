@@ -19,12 +19,6 @@ install:
 	docker-compose exec app cp .env.example .env
 	docker-compose exec app php artisan key:generate
 	docker-compose exec app php artisan migrate:fresh
-npm:
-	docker-compose exec node npm install
-	docker-compose exec node npm run dev
-yarn:
-	docker-compose exec node yarn
-	docker-compose exec node yarn run dev
 stop:
 	docker-compose stop
 restart:
@@ -51,3 +45,11 @@ dump:
 	docker-compose exec app php artisan dump-server
 test:
 	docker-compose exec app php ./vendor/bin/phpunit
+node:
+	docker-compose exec node ash
+npm:
+	docker-compose exec node npm install
+	docker-compose exec node npm run dev
+yarn:
+	docker-compose exec node yarn
+	docker-compose exec node yarn run dev
