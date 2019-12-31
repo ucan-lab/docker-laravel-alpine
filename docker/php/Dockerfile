@@ -1,4 +1,4 @@
-FROM php:7.3-fpm-alpine
+FROM php:7.4-fpm-alpine
 LABEL maintainer "ucan"
 
 # tinker(psysh)
@@ -23,7 +23,8 @@ RUN set -eux && \
     git && \
   apk add --update --no-cache \
     icu-dev \
-    libzip-dev && \
+    libzip-dev \
+    oniguruma-dev && \
   cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime && \
   echo ${TZ} > /etc/timezone && \
   pecl install xdebug && \
