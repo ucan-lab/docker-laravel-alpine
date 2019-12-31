@@ -2,13 +2,6 @@ up:
 	docker-compose up -d
 build:
 	docker-compose build
-rebuild:
-	docker-compose down --rmi all --volumes
-	docker-compose up -d --build
-	docker-compose exec app composer install
-	docker-compose exec app cp .env.example .env
-	docker-compose exec app php artisan key:generate
-	docker-compose exec app php artisan migrate:fresh
 create-project:
 	docker-compose up -d --build
 	docker-compose exec app composer create-project --prefer-dist laravel/laravel .
@@ -18,7 +11,10 @@ install:
 	docker-compose exec app composer install
 	docker-compose exec app cp .env.example .env
 	docker-compose exec app php artisan key:generate
-	docker-compose exec app php artisan migrate:fresh
+	docker-compose exec app php artisan migrate:fresh --seed
+reinstall:
+	@make destroy
+	@make install
 stop:
 	docker-compose stop
 restart:
@@ -31,6 +27,26 @@ ps:
 	docker-compose ps
 app:
 	docker-compose exec app ash -l
+fresh:
+	docker-compose exec app php artisan migrate:fresh
+seed:
+	docker-compose exec app php artisan db:seed
+tinker:
+	docker-compose exec app php artisan tinker
+dump:
+	docker-compose exec app php artisan dump-server
+test:
+	docker-compose exec app php ./vendor/bin/phpunit
+cache:
+	docker-compose exec app composer dump-autoload -o
+	docker-compose exec app php artisan optimize:clear
+	docker-compose exec app php artisan optimize
+cache-clear:
+	docker-compose exec app php artisan optimize:clear
+cs:
+	docker-compose exec app ./vendor/bin/phpcs
+cbf:
+	docker-compose exec app ./vendor/bin/phpcbf
 db:
 	docker-compose exec db bash
 db-testing:
@@ -39,12 +55,6 @@ mysql:
 	docker-compose exec db bash -c 'mysql -u $$MYSQL_USER -p$$MYSQL_PASSWORD $$MYSQL_DATABASE'
 mysql-testing:
 	docker-compose exec db-testing bash -c 'mysql -u $$MYSQL_USER -p$$MYSQL_PASSWORD $$MYSQL_DATABASE'
-tinker:
-	docker-compose exec app php artisan tinker
-dump:
-	docker-compose exec app php artisan dump-server
-test:
-	docker-compose exec app php ./vendor/bin/phpunit
 node:
 	docker-compose exec node ash
 npm:
