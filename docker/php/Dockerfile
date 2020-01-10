@@ -1,6 +1,8 @@
 FROM php:7.4-fpm-alpine
 LABEL maintainer="ucan-lab <info@u-can.tech>"
 
+SHELL ["/bin/ash", "-oeux", "pipefail", "-c"]
+
 # tinker(psysh)
 ARG PSYSH_DIR=/usr/local/share/psysh
 ARG PHP_MANUAL_URL=http://psysh.org/manual/ja/php_manual.sqlite
@@ -12,8 +14,7 @@ ARG TZ
 ENV COMPOSER_ALLOW_SUPERUSER 1
 ENV COMPOSER_HOME /composer
 
-RUN set -eux && \
-  apk update && \
+RUN apk update && \
   apk add --update --no-cache --virtual=.build-dependencies \
     autoconf \
     gcc \
