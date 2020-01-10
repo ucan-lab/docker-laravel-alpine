@@ -4,11 +4,11 @@ services:
     build:
       context: ./docker/php
       args:
-        - TZ=${TZ}
+        - TZ=${TZ:-Asia/Tokyo}
     ports:
-      - ${APP_PORT}:8000
+      - ${APP_PORT:-18000}:8000
     volumes:
-      - ${PROJECT_PATH}:/work
+      - ${PROJECT_PATH:-./src}:/work
       - ./docker/ash:/etc/profile.d
       - ./docker/php/psysh:/root/.config/psysh
       - ./logs:/var/log/php
@@ -17,12 +17,12 @@ services:
     environment:
       - DB_CONNECTION=mysql
       - DB_HOST=db
-      - DB_DATABASE=${DB_NAME}
-      - DB_USERNAME=${DB_USER}
-      - DB_PASSWORD=${DB_PASS}
-      - TZ=${TZ}
-      - MAIL_HOST=${MAIL_HOST}
-      - MAIL_PORT=${MAIL_PORT}
+      - DB_DATABASE=${DB_NAME:-homestead}
+      - DB_USERNAME=${DB_USER:-homestead}
+      - DB_PASSWORD=${DB_PASS:-secret}
+      - TZ=${TZ:-Asia/Tokyo}
+      - MAIL_HOST=${MAIL_HOST:-mail}
+      - MAIL_PORT=${MAIL_PORT:-1025}
       - CACHE_DRIVER=redis
       - SESSION_DRIVER=redis
       - QUEUE_DRIVER=redis
@@ -33,13 +33,13 @@ services:
     depends_on:
       - app
     ports:
-      - ${WEB_PORT}:80
+      - ${WEB_PORT:-10080}:80
     volumes:
-      - ${PROJECT_PATH}:/work
+      - ${PROJECT_PATH:-./src}:/work
       - ./logs:/var/log/nginx
       - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
     environment:
-      - TZ=${TZ}
+      - TZ=${TZ:-Asia/Tokyo}
 
   db:
     image: mysql:8.0
@@ -48,13 +48,13 @@ services:
       - ./logs:/var/log/mysql
       - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
     environment:
-      - MYSQL_DATABASE=${DB_NAME}
-      - MYSQL_USER=${DB_USER}
-      - MYSQL_PASSWORD=${DB_PASS}
-      - MYSQL_ROOT_PASSWORD=${DB_PASS}
-      - TZ=${TZ}
+      - MYSQL_DATABASE=${DB_NAME:-homestead}
+      - MYSQL_USER=${DB_USER:-homestead}
+      - MYSQL_PASSWORD=${DB_PASS:-secret}
+      - MYSQL_ROOT_PASSWORD=${DB_PASS:-secret}
+      - TZ=${TZ:-Asia/Tokyo}
     ports:
-      - ${DB_PORT}:3306
+      - ${DB_PORT:-13306}:3306
 
   db-testing:
     image: mysql:8.0
@@ -64,19 +64,19 @@ services:
       - /var/lib/mysql
       - /var/log/mysql
     environment:
-      - MYSQL_DATABASE=${DB_NAME}
-      - MYSQL_USER=${DB_USER}
-      - MYSQL_PASSWORD=${DB_PASS}
-      - MYSQL_ROOT_PASSWORD=${DB_PASS}
-      - TZ=${TZ}
+      - MYSQL_DATABASE=${DB_NAME:-homestead}
+      - MYSQL_USER=${DB_USER:-homestead}
+      - MYSQL_PASSWORD=${DB_PASS:-secret}
+      - MYSQL_ROOT_PASSWORD=${DB_PASS:-secret}
+      - TZ=${TZ:-Asia/Tokyo}
     ports:
-      - ${DB_TESTING_PORT}:3306
+      - ${DB_TESTING_PORT:-13307}:3306
 
   node:
     image: node:12.14-alpine
     tty: true
     volumes:
-      - ${PROJECT_PATH}:/work
+      - ${PROJECT_PATH:-./src}:/work
     working_dir: /work
 
   redis:
@@ -87,7 +87,7 @@ services:
   mail:
     image: mailhog/mailhog
     ports:
-      - ${MAILHOG_PORT}:8025
+      - ${MAILHOG_PORT:-18025}:8025
 
 volumes:
   db-store:
