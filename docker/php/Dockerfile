@@ -1,5 +1,5 @@
 FROM php:7.4-fpm-alpine
-LABEL maintainer "ucan"
+LABEL maintainer="ucan-lab <info@u-can.tech>"
 
 # tinker(psysh)
 ARG PSYSH_DIR=/usr/local/share/psysh
