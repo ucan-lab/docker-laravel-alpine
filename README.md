@@ -1,6 +1,7 @@
 ---
 
-New Repository => https://github.com/ucan-lab/docker-laravel
+This repository is deprecated. See "docker-laravel" repository.
+https://github.com/ucan-lab/docker-laravel
 
 ---
 
